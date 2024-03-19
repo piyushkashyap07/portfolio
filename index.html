@@ -82,7 +82,52 @@
                     <i class="uil uil-apps"></i>
                 </div>
             </div>
-        </nav>
+        </nav><style>
+            /* Light theme styles */
+            body {
+                background-color: #ffffff;
+                color: #000000;
+            }
+        
+            /* Dark theme styles */
+            body.dark {
+                background-color: #222222;
+                color: #ffffff;
+            }
+        </style>
+        </head>
+        
+        <body>
+        
+            <div class="nav__btns">
+                <!--Theme Change button-->
+                <i class="uil uil-moon change-theme" id="theme-button"></i>
+        
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="uil uil-apps"></i>
+                </div>
+            </div>
+        
+            <script>
+                const themeButton = document.getElementById('theme-button');
+                const body = document.body;
+
+                themeButton.addEventListener('click', () => {
+                    // Toggle the 'dark' class on the body
+                    body.classList.toggle('dark');
+                    // Save the theme preference to localStorage
+                    const theme = body.classList.contains('dark') ? 'dark' : 'light';
+                    localStorage.setItem('theme', theme);
+                });
+
+                // Check if there's a theme preference saved in localStorage
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme) {
+                    body.classList.add(savedTheme);
+                }
+            </script>
+        
+        </body>
     </header>
 
     <!--==================== MAIN ====================-->
@@ -121,7 +166,8 @@
                     </div>
 
                     <div class="home__data">
-                        <h1 class="home_title">Hi!<span class="wave">👋</span>, I'm Piyush</h1>
+                        <h1 class="home_title" style="color: #cca300;">Hi!<span class="wave">👋</span>, I'm Piyush</h1>
+
                         <h3 class="home__subtitle">
                             and I'm <span class="auto-input"></span>
                         </h3>
